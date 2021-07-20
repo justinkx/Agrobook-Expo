@@ -1,15 +1,14 @@
 import { ApolloClient, InMemoryCache } from "@apollo/client";
 import { CachePersistor, AsyncStorageWrapper } from "apollo3-cache-persist";
-import AsyncStorage from "@react-native-async-storage/async-storage";
+import FsStorage from "redux-persist-expo-fs-storage";
 
 async function appoloClientInit() {
   const cache = new InMemoryCache();
 
   let newPersistor = new CachePersistor({
     cache,
-    storage: new AsyncStorageWrapper(AsyncStorage),
+    storage: new AsyncStorageWrapper(FsStorage()),
     debug: __DEV__,
-    trigger: "write",
   });
   await newPersistor.restore();
   const appoloClient = new ApolloClient({
