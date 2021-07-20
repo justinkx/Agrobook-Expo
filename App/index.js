@@ -1,11 +1,12 @@
 import { SafeAreaProvider } from "react-native-safe-area-context";
-import AppLoading from "expo-app-loading";
+import { StatusBar } from "expo-status-bar";
 
 import AppNavigation from "./Navigation/AppNavigation";
 
 export default App = () => {
   return (
     <SafeAreaProvider>
+      <StatusBar style="auto" />
       <AppNavigation />
     </SafeAreaProvider>
   );
